@@ -34,13 +34,13 @@ export function FeaturesSection() {
 	];
 
 	return (
-		<section id="features" className="bg-white py-24">
+		<section id="features" className="bg-white py-24 dark:bg-zinc-950">
 			<div className="container mx-auto px-4 md:px-8">
 				<div className="mx-auto mb-16 max-w-2xl text-center">
-					<h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+					<h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-zinc-50 md:text-4xl">
 						Everything you need to land the interview
 					</h2>
-					<p className="text-lg text-slate-600">
+					<p className="text-lg text-slate-600 dark:text-zinc-400">
 						Stop copy-pasting standard templates. Let AI craft the perfect pitch for every single application.
 					</p>
 				</div>
@@ -49,13 +49,13 @@ export function FeaturesSection() {
 					{features.map((feature, idx) => (
 						<div
 							key={idx}
-							className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5"
+							className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:bg-zinc-900 dark:hover:shadow-blue-900/20"
 						>
-							<div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm transition-transform duration-300 group-hover:scale-110">
+							<div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm transition-transform duration-300 group-hover:scale-110 dark:border-zinc-700 dark:bg-zinc-950">
 								{feature.icon}
 							</div>
-							<h3 className="mb-2 text-xl font-semibold text-slate-900">{feature.title}</h3>
-							<p className="leading-relaxed text-slate-600">{feature.description}</p>
+							<h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-zinc-50">{feature.title}</h3>
+							<p className="leading-relaxed text-slate-600 dark:text-zinc-400">{feature.description}</p>
 						</div>
 					))}
 				</div>

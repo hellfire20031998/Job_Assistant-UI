@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
 import { GoogleGlyph } from "@/components/google-sign-in-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 import { useLandingAuth } from "./use-landing-auth";
 
@@ -11,40 +12,43 @@ export function Navbar() {
 	const { user, loading, signInWithGoogle, signOut } = useLandingAuth();
 
 	return (
-		<nav className="sticky top-0 z-50 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-md">
+		<nav className="sticky top-0 z-50 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80">
 			<div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
 				<div className="flex items-center gap-2">
 					<div className="rounded-lg bg-blue-600 p-1.5">
 						<Sparkles className="h-5 w-5 text-white" />
 					</div>
-					<span className="text-xl font-bold tracking-tight">ApplyAI</span>
+					<span className="text-xl font-bold tracking-tight text-slate-900 dark:text-zinc-50">
+						ApplyAI
+					</span>
 				</div>
-				<div className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-					<a href="#features" className="transition-colors hover:text-slate-900">
+				<div className="hidden items-center gap-8 text-sm font-medium text-slate-600 dark:text-zinc-400 md:flex">
+					<a href="#features" className="transition-colors hover:text-slate-900 dark:hover:text-zinc-50">
 						Features
 					</a>
-					<a href="#how-it-works" className="transition-colors hover:text-slate-900">
+					<a href="#how-it-works" className="transition-colors hover:text-slate-900 dark:hover:text-zinc-50">
 						How it Works
 					</a>
-					<a href="#demo" className="transition-colors hover:text-slate-900">
+					<a href="#demo" className="transition-colors hover:text-slate-900 dark:hover:text-zinc-50">
 						Demo
 					</a>
 				</div>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-3 md:gap-4">
+					<ThemeToggle variant="landing" />
 					{loading ? (
-						<div className="h-9 w-28 animate-pulse rounded-full bg-slate-100" />
+						<div className="h-9 w-28 animate-pulse rounded-full bg-slate-100 dark:bg-zinc-800" />
 					) : user ? (
 						<>
 							<Link
 								href="/dashboard"
-								className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 md:inline-block"
+								className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-zinc-400 dark:hover:text-zinc-50 md:inline-block"
 							>
 								Dashboard
 							</Link>
 							<button
 								type="button"
 								onClick={() => void signOut()}
-								className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900"
+								className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-zinc-400 dark:hover:text-zinc-50"
 							>
 								Sign out
 							</button>
@@ -54,14 +58,14 @@ export function Navbar() {
 							<button
 								type="button"
 								onClick={signInWithGoogle}
-								className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 md:block"
+								className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-zinc-400 dark:hover:text-zinc-50 md:block"
 							>
 								Log in
 							</button>
 							<button
 								type="button"
 								onClick={signInWithGoogle}
-								className="flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-slate-800 active:scale-95"
+								className="flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-slate-800 active:scale-95 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
 							>
 								<span className="scale-90">
 									<GoogleGlyph />

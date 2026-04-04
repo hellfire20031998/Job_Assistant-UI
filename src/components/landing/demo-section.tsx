@@ -43,27 +43,27 @@ export function DemoSection() {
 	};
 
 	return (
-		<section id="demo" className="overflow-hidden bg-white py-24">
+		<section id="demo" className="overflow-hidden bg-white py-24 dark:bg-zinc-950">
 			<div className="container mx-auto px-4 md:px-8">
 				<div className="mx-auto mb-16 max-w-2xl text-center">
-					<h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+					<h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-zinc-50 md:text-4xl">
 						See the magic happen
 					</h2>
-					<p className="text-lg text-slate-600">
+					<p className="text-lg text-slate-600 dark:text-zinc-400">
 						Paste a short job description below to see how ApplyAI crafts the perfect introductory email.
 					</p>
 					{!loading && !user && (
-						<p className="mt-3 text-sm text-slate-500">
+						<p className="mt-3 text-sm text-slate-500 dark:text-zinc-500">
 							Sign in with Google to run the interactive demo.
 						</p>
 					)}
 				</div>
 
-				<div className="mx-auto grid max-w-5xl gap-6 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-200/50 md:grid-cols-2 md:p-4">
-					<div className="flex flex-col gap-4 rounded-xl border border-slate-100 bg-slate-50 p-6">
+				<div className="mx-auto grid max-w-5xl gap-6 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-200/50 dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-black/30 md:grid-cols-2 md:p-4">
+					<div className="flex flex-col gap-4 rounded-xl border border-slate-100 bg-slate-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/80">
 						<div className="flex items-center justify-between">
-							<h3 className="flex items-center gap-2 font-semibold text-slate-800">
-								<FileText className="h-4 w-4 text-slate-500" />
+							<h3 className="flex items-center gap-2 font-semibold text-slate-800 dark:text-zinc-100">
+								<FileText className="h-4 w-4 text-slate-500 dark:text-zinc-500" />
 								Job Details
 							</h3>
 						</div>
@@ -72,17 +72,17 @@ export function DemoSection() {
 							value={jd}
 							onChange={(e) => setJd(e.target.value)}
 							placeholder="Paste a job description snippet here... (e.g., 'Looking for a Java Backend Engineer with 2+ years of experience in Spring Boot and Microservices...')"
-							className="h-48 w-full resize-none rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+							className="h-48 w-full resize-none rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-200 dark:placeholder:text-zinc-600"
 						/>
 
-						<div className="flex items-center justify-between rounded-lg border border-dashed border-slate-300 bg-white p-4">
+						<div className="flex items-center justify-between rounded-lg border border-dashed border-slate-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
 							<div className="flex items-center gap-3">
-								<div className="rounded-md bg-slate-100 p-2">
-									<UploadCloud className="h-5 w-5 text-slate-500" />
+								<div className="rounded-md bg-slate-100 p-2 dark:bg-zinc-800">
+									<UploadCloud className="h-5 w-5 text-slate-500 dark:text-zinc-500" />
 								</div>
 								<div>
-									<p className="text-sm font-medium text-slate-700">Resume.pdf</p>
-									<p className="text-xs text-slate-400">Default profile loaded</p>
+									<p className="text-sm font-medium text-slate-700 dark:text-zinc-200">Resume.pdf</p>
+									<p className="text-xs text-slate-400 dark:text-zinc-500">Default profile loaded</p>
 								</div>
 							</div>
 							<CheckCircle2 className="h-5 w-5 text-emerald-500" />
@@ -92,7 +92,7 @@ export function DemoSection() {
 							type="button"
 							onClick={handleGenerate}
 							disabled={!jd.trim() || isGenerating || loading}
-							className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-900 py-3 font-medium text-white shadow-sm transition-all hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+							className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-900 py-3 font-medium text-white shadow-sm transition-all hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
 						>
 							{isGenerating ? (
 								<>
@@ -118,14 +118,14 @@ export function DemoSection() {
 						</button>
 					</div>
 
-					<div className="relative min-h-[400px] rounded-xl border border-slate-100 bg-white p-6">
-						<h3 className="mb-6 flex items-center gap-2 font-semibold text-slate-800">
-							<Send className="h-4 w-4 text-slate-500" />
+					<div className="relative min-h-[400px] rounded-xl border border-slate-100 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950">
+						<h3 className="mb-6 flex items-center gap-2 font-semibold text-slate-800 dark:text-zinc-100">
+							<Send className="h-4 w-4 text-slate-500 dark:text-zinc-500" />
 							Generated Output
 						</h3>
 
 						{!showResult && !isGenerating && (
-							<div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400">
+							<div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 dark:text-zinc-600">
 								<Bot className="h-12 w-12 opacity-20" />
 								<p className="text-sm font-medium">Waiting for job description...</p>
 							</div>
@@ -133,8 +133,8 @@ export function DemoSection() {
 
 						{isGenerating && (
 							<div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-								<div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-100 border-t-blue-600" />
-								<p className="animate-pulse text-sm font-medium text-slate-500">
+								<div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-100 border-t-blue-600 dark:border-zinc-800 dark:border-t-blue-400" />
+								<p className="animate-pulse text-sm font-medium text-slate-500 dark:text-zinc-400">
 									Drafting the perfect response...
 								</p>
 							</div>
@@ -142,17 +142,17 @@ export function DemoSection() {
 
 						{showResult && (
 							<div className="fade-in slide-in-from-bottom-4 animate-in space-y-4 duration-500">
-								<div className="flex items-center justify-between border-b border-slate-100 pb-4">
+								<div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-zinc-800">
 									<div className="space-y-1">
-										<div className="text-xs font-medium text-slate-500">Subject</div>
-										<div className="text-sm font-semibold text-slate-800">
+										<div className="text-xs font-medium text-slate-500 dark:text-zinc-500">Subject</div>
+										<div className="text-sm font-semibold text-slate-800 dark:text-zinc-100">
 											Application for Software Engineer Role - Himanshu Singh
 										</div>
 									</div>
 									<button
 										type="button"
 										onClick={handleCopy}
-										className="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-50 hover:text-slate-900"
+										className="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
 										title="Copy to clipboard"
 									>
 										{copied ? (
@@ -163,7 +163,7 @@ export function DemoSection() {
 									</button>
 								</div>
 
-								<div className="prose prose-sm whitespace-pre-wrap leading-relaxed text-slate-600">
+								<div className="prose prose-sm whitespace-pre-wrap leading-relaxed text-slate-600 dark:text-zinc-400">
 									Hi Hiring Team,
 									<br />
 									<br />

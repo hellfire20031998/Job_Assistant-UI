@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { GoogleSignInButton } from "@/components/google-sign-in-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useAuth } from "@/providers/auth-provider";
 
 export function SiteHeader() {
@@ -19,6 +20,7 @@ export function SiteHeader() {
 					JobAssistant
 				</Link>
 				<nav className="flex items-center gap-3">
+					<ThemeToggle variant="app" />
 					{loading ? (
 						<span className="h-9 w-24 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-800" />
 					) : user ? (
