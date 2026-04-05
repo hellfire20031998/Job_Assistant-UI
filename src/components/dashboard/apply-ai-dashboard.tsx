@@ -47,7 +47,7 @@ export function ApplyAiDashboard({ user, onSignOut }: Props) {
 			/>
 
 			<div className="flex min-w-0 flex-1 flex-col">
-				<DashboardTopNav onNewApplication={openNewApplication} />
+				<DashboardTopNav user={user} />
 				{!newApplicationOpen ? (
 					<DashboardMobileNav activeTab={activeTab} onTabChange={handleTabChange} />
 				) : null}
@@ -76,7 +76,7 @@ export function ApplyAiDashboard({ user, onSignOut }: Props) {
 										</div>
 									</div>
 								) : (
-									<TabPlaceholder tab={activeTab} />
+									<TabPlaceholder tab={activeTab} onNewApplication={openNewApplication} />
 								)}
 							</>
 						)}

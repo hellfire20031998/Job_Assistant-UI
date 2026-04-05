@@ -1,12 +1,19 @@
-import { Bell, Plus, Search } from "lucide-react";
+import Image from "next/image";
+import { Bell, Search } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import type { UserProfile } from "@/lib/types";
+
+import { dashboardInitials } from "./dashboard-user";
 
 type Props = {
-	onNewApplication?: () => void;
+	user: UserProfile;
 };
 
-export function DashboardTopNav({ onNewApplication }: Props) {
+export function DashboardTopNav({ user }: Props) {
+	const displayName = user.displayName?.trim() || user.email;
+	const initials = dashboardInitials(user);
+
 	return (
 		<header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/60 bg-white/80 px-4 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80 md:px-8">
 			<div className="flex flex-1 items-center gap-4">
@@ -20,7 +27,7 @@ export function DashboardTopNav({ onNewApplication }: Props) {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-2 sm:gap-4">
+			<div className="flex min-w-0 items-center gap-2 sm:gap-3 md:gap-4">
 				<ThemeToggle variant="landing" />
 				<button
 					type="button"
@@ -30,14 +37,44 @@ export function DashboardTopNav({ onNewApplication }: Props) {
 					<Bell className="h-5 w-5" />
 					<span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-white bg-rose-500 dark:border-zinc-950" />
 				</button>
-				<button
-					type="button"
-					onClick={onNewApplication}
-					className="flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-slate-900/10 transition-all hover:bg-slate-800 active:scale-95 dark:bg-zinc-100 dark:text-zinc-900 dark:shadow-none dark:hover:bg-white"
+				<div
+					className="hidden min-w-0 items-center gap-2.5 border-l border-slate-200 pl-3 dark:border-zinc-700 sm:flex"
+					title={displayName}
 				>
-					<Plus className="h-4 w-4" />
-					<span className="hidden sm:inline">New Application</span>
-				</button>
+					{user.pictureUrl ? (
+						<Image
+							src={user.pictureUrl}
+							alt=""
+							width={36}
+							height={36}
+							className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-slate-200 dark:ring-zinc-600"
+							referrerPolicy="no-referrer"
+						/>
+					) : (
+						<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-linear-to-tr from-blue-600 to-violet-600 text-xs font-bold text-white shadow-sm ring-1 ring-slate-200/60 dark:ring-zinc-600">
+							{initials}
+						</div>
+					)}
+					<span className="max-w-40 truncate text-sm font-semibold text-slate-900 dark:text-zinc-100">
+						{displayName}
+					</span>
+				</div>
+				<div className="flex shrink-0 items-center gap-2 sm:hidden" title={displayName}>
+					{user.pictureUrl ? (
+						<Image
+							src={user.pictureUrl}
+							alt=""
+							width={36}
+							height={36}
+							className="h-9 w-9 rounded-full object-cover ring-1 ring-slate-200 dark:ring-zinc-600"
+							referrerPolicy="no-referrer"
+						/>
+					) : (
+						<div className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-tr from-blue-600 to-violet-600 text-xs font-bold text-white shadow-sm ring-1 ring-slate-200/60 dark:ring-zinc-600">
+							{initials}
+						</div>
+					)}
+				</div>
 			</div>
 		</header>
 	);
